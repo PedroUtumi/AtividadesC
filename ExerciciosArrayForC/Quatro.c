@@ -1,22 +1,25 @@
 // QUATRO - Leia as notas de 10 alunos e armazene-as em um vetor. Calcule e apresente a média da turma. Depois, mostre quais notas são maiores ou iguais à média.
 
 #include <stdio.h>
+#define TAM_MAX 10
 
-float calcularMediaGeral(const int tamMax, float listaNotas[tamMax]) {
+float listaNotas[TAM_MAX];
+
+float calcularMediaGeral() {
     float mediaGeral = 0;
 
-    for (int i = 0; i < tamMax; i++) {
+    for (int i = 0; i < TAM_MAX; i++) {
         mediaGeral = mediaGeral + listaNotas[i];
     }
-    mediaGeral = mediaGeral / tamMax;
+    mediaGeral = mediaGeral / TAM_MAX;
     
     return mediaGeral;    
 }
 
-int calcularQuantidadeMaiorIgualMedia(const int tamMax, float listaNotas[tamMax], float mediaGeral) {
+int calcularQuantidadeMaiorIgualMedia(float mediaGeral) {
     int quantidade = 0;
 
-    for (int i = 0; i < tamMax; i++) {
+    for (int i = 0; i < TAM_MAX; i++) {
         if (listaNotas[i] >= mediaGeral) {
             quantidade++;    
         }
@@ -25,26 +28,23 @@ int calcularQuantidadeMaiorIgualMedia(const int tamMax, float listaNotas[tamMax]
     return quantidade;
 }
 
-float calcularNotaMaiorIgualMedia(const int tamMax, float listaNotas[tamMax], float mediaGeral, int index) {
+float calcularNotaMaiorIgualMedia(float mediaGeral, int index) {
     return listaNotas[index] >= mediaGeral ? listaNotas[index] : -1;
 }
 
 int main() {
-    const int tamMax = 10;
-    float listaNotas[tamMax];
-
-    for (int i = 0; i < tamMax; i++) {
+    for (int i = 0; i < TAM_MAX; i++) {
         printf("Digite a nota do aluno %d: ", i + 1);
         scanf("%f", &listaNotas[i]);
     }
 
-    float mediaGeral = calcularMediaGeral(tamMax, listaNotas);
-    int quantidade = calcularQuantidadeMaiorIgualMedia(tamMax, listaNotas, mediaGeral);
+    float mediaGeral = calcularMediaGeral();
+    int quantidade = calcularQuantidadeMaiorIgualMedia(mediaGeral);
     float notasMaioresIguaisMedia[quantidade];
 
     int j = 0;
-    for (int i = 0; i < tamMax; i++) {
-        float nota = calcularNotaMaiorIgualMedia(tamMax, listaNotas, mediaGeral, i);
+    for (int i = 0; i < TAM_MAX; i++) {
+        float nota = calcularNotaMaiorIgualMedia(mediaGeral, i);
         if (nota >= 0) {
             notasMaioresIguaisMedia[j] = nota;
             j++; 

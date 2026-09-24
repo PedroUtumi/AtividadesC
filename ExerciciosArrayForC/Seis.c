@@ -1,11 +1,14 @@
 // SEIS - Leia 10 números inteiros. Informe o menor valor encontrado e a posição em que ele aparece no vetor.
 
 #include <stdio.h>
+#define TAM_MAX 10
 
-int descobrirMenorValor(const int tamMax, int numeros[tamMax]) {
-    int menor = 0;
+int numeros[TAM_MAX];
+
+int descobrirMenorValor() {
+    int menor = numeros[0];
     
-    for (int i = 0; i < tamMax; i++) {
+    for (int i = 0; i < TAM_MAX; i++) {
         if (numeros[i] < menor) {
             menor = numeros[i];
         }
@@ -14,26 +17,23 @@ int descobrirMenorValor(const int tamMax, int numeros[tamMax]) {
     return menor;
 }
 
-int descobrirPosicaoMenorValor(const int tamMax, int numeros[tamMax], int menorValor, int index) {    
-    return numeros[index] == menorValor ? index : 255;
+int descobrirPosicaoMenorValor(int menorValor, int index) {    
+    return numeros[index] == menorValor ? index : TAM_MAX + 1;
 }
 
 int main() {
-    const int tamMax = 10;
-    int numeros[tamMax];
-
-    for (int i = 0; i < tamMax; i++) {
+    for (int i = 0; i < TAM_MAX; i++) {
         printf("Digite o valor %d: ", i + 1);
         scanf("%d", &numeros[i]);
     }
 
-    int menorValor = descobrirMenorValor(tamMax, numeros);
+    int menorValor = descobrirMenorValor();
     printf("Menor valor da lista: %d \n", menorValor);
     
     int j = 1;
-    for (int i = 0; i < tamMax; i++) {
-        int posicao = descobrirPosicaoMenorValor(tamMax, numeros, menorValor, i);
-        if (posicao < 255) {
+    for (int i = 0; i < TAM_MAX; i++) {
+        int posicao = descobrirPosicaoMenorValor(menorValor, i);
+        if (posicao < TAM_MAX + 1) {
             printf("%d Posicao menor valor da lista: %d \n", j, posicao);
             j++;
         }
