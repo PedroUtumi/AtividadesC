@@ -6,8 +6,8 @@
 int numerosA[TAM_MAX];
 int numerosB[TAM_MAX];
 
-int multiplicar(int index) {    
-    return numerosA[index] * numerosB[index];
+int adicionar(int index) {    
+    return numerosA[index] + numerosB[index];
 }
 
 int main() {
@@ -23,7 +23,7 @@ int main() {
     }
 
     for (int i = 0; i < TAM_MAX; i++) {
-        int valor = multiplicar(i);
+        int valor = adicionar(i);
         numerosC[i] = valor; 
     }
 
