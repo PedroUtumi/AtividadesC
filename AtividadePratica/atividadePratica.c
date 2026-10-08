@@ -91,11 +91,11 @@ int main() {
     mostrarMenorTemperatura(sensor, quantidadeSensores);
 
     char maisSensores;
-    printf("Serão adicionados mais sensores?: (S/n)");
+    printf("Serão adicionados mais sensores?(S/n): ");
     scanf(" %c", &maisSensores);
     maisSensores = toupper(maisSensores);
 
-    if (maisSensores == 'S') {
+    while (maisSensores == 'S') {
         int quantidadeSensoresAdicionados;
         struct Sensor *novo;
         
@@ -113,14 +113,21 @@ int main() {
             sensor = NULL;
             return 1;
         }
-
+        
         cadastrarTemperaturas(sensor, quantidadeSensores, novaQuantidadeSensores);
+        quantidadeSensores = novaQuantidadeSensores;
+
         mostrarTemperaturas(sensor, novaQuantidadeSensores);
         calcularMedia(sensor, novaQuantidadeSensores);
         mostrarMaiorTemperatura(sensor, novaQuantidadeSensores);
         mostrarMenorTemperatura(sensor, novaQuantidadeSensores);
 
-    } else printf("Não serão adicionados mais sensores \n");
+        printf("Serão adicionados mais sensores?(S/n): ");
+        scanf(" %c", &maisSensores);
+        maisSensores = toupper(maisSensores);
+    } 
+
+    printf("Não serão adicionados mais sensores");
 
     free(sensor);
     sensor = NULL;
