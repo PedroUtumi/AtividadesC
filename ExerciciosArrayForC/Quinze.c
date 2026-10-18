@@ -16,7 +16,7 @@ int main() {
     for (int i = 0; i < TAM_MAX; i++) {
         int apareceu = 0;
         for (int j = 0; j < i; j++) {
-            if (numeros[i] == numeros[j]) {
+            if (numeros[i] == numeros[j]) { 
                 apareceu = 1;
                 break;
             }
