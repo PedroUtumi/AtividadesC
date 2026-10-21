@@ -28,5 +28,3 @@ int main() {
 
     return 0;
 }
-
-// calcularMedia deve retornar um valor pois ela é uma função estritamente de calculo, ou seja, que precisa retornar um valor para que o programa use posteriormente. Já exibirSituacao precisa exibir mensagens, e não retornar valores como calcularMedia
